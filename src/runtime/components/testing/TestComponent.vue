@@ -6,16 +6,24 @@ const count = ref(0)
 
 const name = ref('')
 
-const today = new Date()
+const now = ref(new Date())
+
+const setNow = () => {
+  now.value = new Date()
+}
 </script>
 
 <template>
   <div>
-    <h1 class="italic">
-      Italic: Test component
-    </h1>
-    <p>Today is: {{ formatDate(today) }}</p>
-    <p>{{ formatTime(today, true) }}</p>
+    <h2>
+      <span class="italic">Italic: Test component</span>
+    </h2>
+    <UButton
+      label="Update now()"
+      @click="setNow"
+    />
+    <p>Now is: {{ formatDate(now) }}</p>
+    <p>{{ formatTime(now, true) }}</p>
     <input
       v-model="name"
       placeholder="Enter your name"

@@ -1,15 +1,15 @@
 <template>
   <div>
-    Nuxt module playground!
-    <Prose>
-      <h1>Hello from implemio!</h1>
-      <p>This is inside a Prose component!</p>
-    </Prose>
-    <TestComponent />
+    <IOProse>
+      <h1>Nuxt module playground!</h1>
+      <p class="italic">
+        This is a p with italic, wrapped in IOProse!
+      </p>
+      <UButton label="Click me!" />
+    </IOProse>
+    <IOTestingTestComponent />
   </div>
 </template>
 
 <script setup>
-import Prose from '../src/runtime/components/Prose.vue'
-import TestComponent from '../src/runtime/components/testing/TestComponent.vue'
 </script>

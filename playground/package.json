@@ -8,6 +8,17 @@
         "generate": "nuxi generate"
     },
     "dependencies": {
+        "@nuxt/ui-pro": "3.0.0-beta.3",
         "nuxt": "^3.16.0"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "@parcel/watcher",
+            "esbuild",
+            "vue-demi"
+        ]
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.16"
     }
 }
