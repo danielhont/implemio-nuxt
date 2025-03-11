@@ -1,40 +1,23 @@
 # @implemio/nuxt
 
-## @Me: 1) Add stuff 2) 'pnpm run release'
+## DEV: @Me: 1) Add stuff 2) 'pnpm run release'
 
-Implemio Module for Nuxt - A collection of components, composables, and utilities for Nuxt 3/4 projects.
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
-[![Nuxt][nuxt-src]][nuxt-href]
+Implemio Module for Nuxt - A collection of components, composables, and utilities for Nuxt 3//4 projects.
 
-## Features
 
-- 🧩 Auto-imported Vue components
-- 🛠️ Auto-imported composables
-- 🔧 Auto-imported utility functions
-- 🎨 Customizable with module options
-- 📚 Full TypeScript support
-
-## Installation
+## 1/3 Installation
 
 Add the module to your Nuxt project:
 
 ```bash
 # Using pnpm
 pnpm add @implemio/nuxt
-
-# Using npm
-npm install @implemio/nuxt
-
-# Using yarn
-yarn add @implemio/nuxt
 ```
 
-## Setup
+## 2/3 Setup
 
-Add the module to your `nuxt.config.ts`:
+### Add the module to  `nuxt.config.ts`:
 
 ```typescript
 export default defineNuxtConfig({
@@ -47,14 +30,23 @@ export default defineNuxtConfig({
 })
 ```
 
-## Required Dependencies
+### Add the tailwind import to avoid classes being purged:
+
+```css
+/* /assets/css/main.css */
+@import "tailwindcss" theme(static);
+@import "@nuxt/ui-pro";
+@source "../../../node_modules/@implemio/nuxt/dist/runtime/components/";
+@plugin "@tailwindcss/typography";
+```
+
+## 3/3 Required Dependencies
 
 This module requires:
 - Vue + Nuxt
 - Tailwind 4
 - Nuxt UI
 
-## Usage
 
 ### Components
 

@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
-import { capitalizeWords, formatDate, formatTime } from '../utils/various'
+import { capitalizeWords, formatDate, formatTime } from '../../utils/various'
 
 const count = ref(0)
 
@@ -11,7 +11,9 @@ const today = new Date()
 
 <template>
   <div>
-    <h1>Test component</h1>
+    <h1 class="italic">
+      Italic: Test component
+    </h1>
     <p>Today is: {{ formatDate(today) }}</p>
     <p>{{ formatTime(today, true) }}</p>
     <input

@@ -20,9 +20,13 @@ export function truncate(str: string, length = 50): string {
 
 // Date manipulation functions
 
-export function formatDate(timestamp: string | null, dateOnly?: boolean): string {
+export function formatDate(
+  timestamp: string | Date | number | null,
+  dateOnly?: boolean,
+  locale?: string,
+): string {
   if (!timestamp) return ''
-  return new Date(timestamp).toLocaleString('nb-NO', {
+  return new Date(timestamp).toLocaleString(locale || 'nb-NO', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -30,11 +34,14 @@ export function formatDate(timestamp: string | null, dateOnly?: boolean): string
     minute: !dateOnly ? '2-digit' : undefined,
   })
 }
-// TO use: :title="`(${formatDate(notification.created_at)})"` in a component
 
-export function formatTime(timestamp: string | null, includeSeconds?: boolean): string {
+export function formatTime(
+  timestamp: string | Date | number | null,
+  includeSeconds?: boolean,
+  locale?: string,
+): string {
   if (!timestamp) return ''
-  return new Date(timestamp).toLocaleString('nb-NO', {
+  return new Date(timestamp).toLocaleString(locale || 'nb-NO', {
     hour: '2-digit',
     minute: '2-digit',
     second: includeSeconds ? '2-digit' : undefined,

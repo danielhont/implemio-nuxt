@@ -11,5 +11,5 @@
 
 <script setup>
 import Prose from '../src/runtime/components/Prose.vue'
-import TestComponent from '../src/runtime/components/TestComponent.vue'
+import TestComponent from '../src/runtime/components/testing/TestComponent.vue'
 </script>
