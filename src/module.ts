@@ -56,5 +56,13 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add plugin
     addPlugin(resolve('./runtime/plugin'))
+
+    // Simple Tailwind hook - works with @nuxt/ui-pro's bundled Tailwind
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    nuxt.hook('tailwindcss:config' as any, (tailwindConfig) => {
+    // Add our components to content scanning
+      tailwindConfig.content = tailwindConfig.content || []
+      tailwindConfig.content.push(resolve('./runtime/components/**/*.vue'))
+    })
   },
 })
