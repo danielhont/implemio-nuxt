@@ -1,5 +1,7 @@
 # @implemio/nuxt
 
+## @Me: 1) Add stuff 2) 'pnpm run release'
+
 Implemio Module for Nuxt - A collection of components, composables, and utilities for Nuxt 3/4 projects.
 
 [![npm version][npm-version-src]][npm-version-href]
