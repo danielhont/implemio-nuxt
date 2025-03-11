@@ -45,6 +45,13 @@ export default defineNuxtConfig({
 })
 ```
 
+## Required Dependencies
+
+This module requires:
+- Vue + Nuxt
+- Tailwind 4
+- Nuxt UI
+
 ## Usage
 
 ### Components
@@ -216,5 +223,3 @@ See the Contributing Guide for development instructions.
 [license-href]: https://npmjs.com/package/@implemio/nuxt
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
 [nuxt-href]: https://nuxt.com
-
-Similar code found with 1 license type
