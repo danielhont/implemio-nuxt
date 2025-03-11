@@ -1,6 +1,6 @@
 {
   "name": "@implemio/nuxt",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "The Implemio module for Nuxt",
   "repository": "implemio/implemio-nuxt",
   "license": "MIT",
