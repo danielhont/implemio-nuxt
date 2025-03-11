@@ -1,6 +1,6 @@
 {
   "name": "@implemio/nuxt",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "The Implemio module for Nuxt",
   "repository": "implemio/implemio-nuxt",
   "license": "MIT",
@@ -23,7 +23,8 @@
     "scope": "@implemio"
   },
   "scripts": {
-    "prepack": "nuxt-module-build build",
+    "generate-safelist": "node scripts/extract-classes.js",
+    "prepack": "npm run generate-safelist && nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
@@ -45,15 +46,16 @@
     "@types/node": "latest",
     "changelogen": "^0.6.1",
     "eslint": "^9.22.0",
+    "glob": "^11.0.1",
     "nuxt": "^3.16.0",
     "typescript": "~5.8.2",
     "vitest": "^3.0.8",
     "vue-tsc": "^2.2.8"
   },
   "peerDependencies": {
-    "tailwindcss": "^4.0.0",
+    "@nuxt/ui-pro": "^3.x",
     "@tailwindcss/typography": "^0.5.0",
-    "@nuxt/ui-pro": "^3.x"
+    "tailwindcss": "^4.0.0"
   },
   "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
   "pnpm": {
