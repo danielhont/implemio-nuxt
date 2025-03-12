@@ -55,6 +55,6 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Add plugin
-    addPlugin(resolve('./runtime/plugin'))
+    // addPlugin(resolve('./runtime/plugin'))
   },
 })
