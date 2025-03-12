@@ -1,49 +1,79 @@
-// String manipulation functions
+// String manipulation functions ------------------------------------------------
 
-export function capitalize(str: string): string {
+/**
+ * Capitalizes each word in a string by default, or only the first word if "allWords" is false.
+ * @param str - The string to capitalize
+ * @param allWords - Whether to capitalize all words or just the first
+ * @returns A new string with the requested capitalization
+ */
+export function IOCapitalize(str: string, allWords = true): string {
   if (!str || typeof str !== 'string') return ''
-  return str.charAt(0).toUpperCase() + str.slice(1)
+
+  if (allWords) {
+    return str
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  }
+  else {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
 }
 
-export function capitalizeWords(str: string): string {
-  if (!str || typeof str !== 'string') return ''
-  return str
-    .split(' ')
-    .map(word => capitalize(word))
-    .join(' ')
-}
-
-export function truncate(str: string, length = 50): string {
+/**
+ * Truncates a string to a specified length, appending "..." if it exceeds that length.
+ * @param str - The string to truncate
+ * @param length - Maximum length of the truncated string
+ * @returns The truncated string
+ */
+export function IOTruncate(str: string, length = 50): string {
   if (!str || typeof str !== 'string') return ''
   return str.length > length ? str.slice(0, length) + '...' : str
 }
 
-// Date manipulation functions
+// Date manipulation functions ------------------------------------------------
 
-export function formatDate(
-  timestamp: string | Date | number | null,
-  dateOnly?: boolean,
-  locale?: string,
+/**
+ * Formats a given timestamp based on mode, optional seconds, and locale.
+ * @param timestamp - The date or string representing a date
+ * @param config - Configuration object for date formatting
+ * @param config.mode - "default", "date", or "time"
+ * @param config.includeSeconds - Include seconds if true
+ * @param config.locale - Locale for formatting (default: "nb-NO")
+ * @returns A formatted date string
+ */
+export function IOFormatDate(
+  timestamp: string | number | Date | null,
+  {
+    mode = 'default',
+    includeSeconds = false,
+    locale = 'nb-NO',
+  }: {
+    mode?: 'default' | 'date' | 'time'
+    includeSeconds?: boolean
+    locale?: string
+  } = {},
 ): string {
   if (!timestamp) return ''
-  return new Date(timestamp).toLocaleString(locale || 'nb-NO', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: !dateOnly ? '2-digit' : undefined,
-    minute: !dateOnly ? '2-digit' : undefined,
-  })
-}
 
-export function formatTime(
-  timestamp: string | Date | number | null,
-  includeSeconds?: boolean,
-  locale?: string,
-): string {
-  if (!timestamp) return ''
-  return new Date(timestamp).toLocaleString(locale || 'nb-NO', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: includeSeconds ? '2-digit' : undefined,
-  })
+  const date = new Date(timestamp)
+  const options: Intl.DateTimeFormatOptions = {}
+
+  // Include date parts if mode is 'date' or 'default'
+  if (mode !== 'time') {
+    options.year = 'numeric'
+    options.month = '2-digit'
+    options.day = '2-digit'
+  }
+
+  // Include time parts if mode is 'time' or 'default'
+  if (mode !== 'date') {
+    options.hour = '2-digit'
+    options.minute = '2-digit'
+    if (includeSeconds) {
+      options.second = '2-digit'
+    }
+  }
+
+  return date.toLocaleString(locale, options)
 }

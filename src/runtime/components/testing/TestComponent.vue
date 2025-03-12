@@ -1,11 +1,10 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
-import { capitalizeWords, formatDate, formatTime } from '../../utils/various'
+import { IOCapitalize, IOFormatDate } from '../../utils/various'
+import { useIOCounter } from '../../composables/testComposable'
 
-const count = ref(0)
-
+const count = useIOCounter()
 const name = ref('')
-
 const now = ref(new Date())
 
 const setNow = () => {
@@ -22,16 +21,18 @@ const setNow = () => {
       label="Update now()"
       @click="setNow"
     />
-    <p>Now is: {{ formatDate(now) }}</p>
-    <p>{{ formatTime(now, true) }}</p>
+    <p>Now is: {{ IOFormatDate(now, { includeSeconds: true, mode: 'time' }) }}</p>
     <input
       v-model="name"
       placeholder="Enter your name"
     >
-    <p>Your name is: {{ capitalizeWords(name) }}</p>
-    <p>Count is {{ count }}</p>
-    <button @click="count++">
+    <p>Your name is: {{ IOCapitalize(name) }}</p>
+    <p>Count is {{ count.count }}</p>
+    <UButton @click="count.increment">
       Increment
-    </button>
+    </UButton>
+    <UButton @click="count.decrement">
+      Increment
+    </UButton>
   </div>
 </template>
